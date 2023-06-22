@@ -3,9 +3,9 @@ Telegram API library for V.
 
 Example usage:
 ```v
-import mvgram
-import mvgram.ext
-import mvgram.handlers
+import telev
+import telev.ext
+import telev.handlers
 
 pub fn handle_new_messages(b ext.Bot, message ext.Message) {
 	if message.text.to_lower() == "/start" {
