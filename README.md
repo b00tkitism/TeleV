@@ -15,13 +15,12 @@ pub fn handle_new_messages(b ext.Bot, message ext.Message) {
 					ext.InlineKeyboardButton{text: "VLang in Github", url: "https://github.com/vlang/v"}
 				],
 				[
-					ext.InlineKeyboardButton{text: "MVgram in Github", callback_data: "nothing"},
-					ext.InlineKeyboardButton{text: "Coming soon ...", callback_data: "nothing"}
+					ext.InlineKeyboardButton{text: "TeleV in Github", url: "https://github.com/alom4hdi/telev"}
 				]
 			]
 		}
 		mut answer := "Hello <a href=\"tg://user?id=${message.from.id}\"><b>${message.from.first_name}</b></a>"
-		answer += "\nThis is a Bot for testing MVgram (Telegram api library for <a href=\"github.com/vlang/v\">V</a>)"
+		answer += "\nThis is a Bot for testing TeleV (Telegram api library for <a href=\"github.com/vlang/v\">V</a>)"
 		if message.chat.@type != "private" {
 			answer += "\n\nI am in <b>\"${message.chat.title}\"</b> group."
 		}
@@ -30,12 +29,12 @@ pub fn handle_new_messages(b ext.Bot, message ext.Message) {
 }
 
 pub fn handle_new_callback_queries(b ext.Bot, callback_query ext.CallbackQuery) {
-	callback_query.answer(bot: b, text: "MVgram will be open source soon !", show_alert: false)
+	callback_query.answer(bot: b, text: "Hello ? how did you find this ?", show_alert: false)
 }
 
 fn main() {
 	max_coroutine := 100
-	my_bot := mvgram.new_telegram_bot(bot_token: "9999999999:xxxxx-xxxxxxxxxxxxxxxxxxxxx")
+	my_bot := telev.new_telegram_bot(bot_token: "9999999999:xxxxx-xxxxxxxxxxxxxxxxxxxxx")
 	mut dispatcher := ext.new_dispatcher(max_coroutine)
 	dispatcher.add_handler(handlers.new_message_handler(handle_new_messages))
 	dispatcher.add_handler(handlers.new_callback_query_handler(handle_new_callback_queries))
