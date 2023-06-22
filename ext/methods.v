@@ -25,6 +25,11 @@ pub fn (b Bot) get_updates(params GetUpdatesParameters) []Updates {
 	return resp
 }
 
+pub fn (b Bot) get_me() User {
+	resp := json.decode(User, b,send_api_request("getMe")) or { return User{} }
+	return resp
+}
+
 [params]
 pub struct SendMessageParams {
 	chat_id i64
